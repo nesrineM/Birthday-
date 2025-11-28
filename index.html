@@ -265,6 +265,7 @@
 
   // رسم القلب
   window.onload = function () {
+
   const canvas = document.getElementById("heartCanvas");
   const ctx = canvas.getContext("2d");
 
@@ -272,12 +273,11 @@
   canvas.height = 400;
 
   ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.scale(1.5, 1.5);  // حتى يكون القلب واضحًا ومتناسقًا
-  ctx.lineWidth = 2;
+  ctx.scale(12, 12);  // يكبّر القلب بشكل متناسق
+  ctx.lineWidth = 0.2;
   ctx.strokeStyle = "#d63f70";
-  ctx.fillStyle = "#ffb6c9";
 
-  function heartShape(t) {
+  function heart(t) {
     const x = 16 * Math.pow(Math.sin(t), 3);
     const y =
       13 * Math.cos(t) -
@@ -287,16 +287,28 @@
     return { x, y };
   }
 
-  ctx.beginPath();
+  let t = 0;
+  const step = 0.02;
 
-  for (let t = 0; t < Math.PI * 2; t += 0.01) {
-    const { x, y } = heartShape(t);
-    ctx.lineTo(x, -y);
+  let prev = heart(0);
+
+  function draw() {
+    const p = heart(t);
+
+    ctx.beginPath();
+    ctx.moveTo(prev.x, -prev.y);
+    ctx.lineTo(p.x, -p.y);
+    ctx.stroke();
+
+    prev = p;
+    t += step;
+
+    if (t < Math.PI * 2) {
+      requestAnimationFrame(draw);
+    }
   }
 
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
+  draw();
 };
 </script>
 
