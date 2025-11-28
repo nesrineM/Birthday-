@@ -268,9 +268,10 @@
 
   const canvas = document.getElementById("heartCanvas");
   const ctx = canvas.getContext("2d");
-
+canvas.width = 400;
+  canvas.height = 400;
   ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.scale(12, 12);  // يكبّر القلب بشكل متناسق
+    // يكبّر القلب بشكل متناسق
   ctx.lineWidth = 0.2;
   ctx.strokeStyle = "#d63f70";
 
