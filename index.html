@@ -292,23 +292,8 @@
 
   let prev = heart(0);
 
-  function draw() {
-    const p = heart(t);
-
-    ctx.beginPath();
-    ctx.moveTo(prev.x, -prev.y);
-    ctx.lineTo(p.x, -p.y);
-    ctx.stroke();
-
-    prev = p;
-    t += step;
-
-    if (t < Math.PI * 2) {
-      requestAnimationFrame(draw);
-    }
-  }
-
-  draw();
+  
+  
     let i=0;
     const total=300; 
 
