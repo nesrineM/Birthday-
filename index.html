@@ -309,6 +309,21 @@
   }
 
   draw();
+    let i=0;
+    const total=500; 
+
+    function drawStep(){
+      if(i>=total) return;
+      let t = Math.PI*2*(i/total);
+      let p = heart(t);
+      ctx.beginPath();
+      ctx.moveTo(0,0);
+      ctx.lineTo(p.x*10, -p.y*10);
+      ctx.stroke();
+      i++;
+      requestAnimationFrame(drawStep);
+    }
+    drawStep();
 };
 </script>
 
