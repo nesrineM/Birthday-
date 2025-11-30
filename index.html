@@ -118,13 +118,7 @@
       line-height:1.8;
     }
 
-    footer{
-      width:100%;
-      margin-top:40px;
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-    }
+  
 
     /* القلب في أسفل الصفحة */
     .heart-section{
@@ -186,7 +180,7 @@
       </div>
 
       <div class="message">
-        <p>فاكرة أول ليلة اتكلمنا فيها…
+        <p>فاكر أول ليلة اتكلمنا فيها…
 كانت زي باب اتفتح من غير ما أخبط، ودخلت منه على حياة ماكانش لي فيها غير إنّي أسمعك وأتعلّق بيك. 
         </p>
         <p>
@@ -214,9 +208,6 @@
       </div>
     </div>
 
-    <footer>
-      مرر للمزيد أو اضغط على النقاط للتنقّل بين الصور
-    </footer>
   </div>
 
   <!-- القلب أسفل الصفحة -->
@@ -297,9 +288,16 @@ canvas.width = 400;
       ctx.stroke();
       i++;
       requestAnimationFrame(drawStep);
-    }
-    drawStep();
+      
+    }  else {
+        // بعد انتهاء القلب: ننتظر ثم نعيد الرسم
+        setTimeout(() => {
+          ctx.clearRect(-canvas.width, -canvas.height, canvas.width * 2, canvas.height * 2);
+          drowStep(); 
+        }, 800); // مهلة صغيرة قبل إعادة الرسم
+    
 };
+  }
 </script>
 
 </body>
