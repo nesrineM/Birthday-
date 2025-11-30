@@ -289,14 +289,9 @@ canvas.width = 400;
       i++;
       requestAnimationFrame(drawStep);
       
-    }  else {
-        // بعد انتهاء القلب: ننتظر ثم نعيد الرسم
-        setTimeout(() => {
-          ctx.clearRect(-canvas.width, -canvas.height, canvas.width * 2, canvas.height * 2);
+    } 
           drawStep(); 
-        }, 800); // مهلة صغيرة قبل إعادة الرسم
-    
-};
+
   }
 </script>
 
