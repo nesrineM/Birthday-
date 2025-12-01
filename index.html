@@ -209,7 +209,47 @@
     </div>
 
   </div>
+<div style="text-align:center; margin-top:30px;">
+  <button id="surpriseBtn"
+    style="
+      padding:14px 32px;
+      background:#d63f70;
+      color:#fff;
+      border:none;
+      border-radius:30px;
+      font-size:18px;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(214,63,112,0.35);
+      transition:0.3s;
+    "
+    onmouseover="this.style.transform='scale(1.07)'"
+    onmouseout="this.style.transform='scale(1)'"
+  >🎁 افتح مفاجأتك</button>
+</div>
 
+<!-- الصندوق المخفي -->
+<div id="surpriseBox"
+  style="
+    max-width:700px;
+    margin:25px auto 0;
+    background:#fff;
+    padding:24px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,0.08);
+    font-size:18px;
+    color:#444;
+    line-height:1.9;
+    opacity:0;
+    transform:scale(0.95);
+    pointer-events:none;
+    transition:0.6s ease;
+  ">
+  🌸 **هذه مفاجأتك يا سيدي العزيز…**  
+  رسالة خرجت من القلب، محمّلة بكل الامتنان والحب والاحترام لك.  
+  وجودك في حياتي هو أجمل ما حدث لي.  
+  شكراً لك دائمًا… 💗
+</div>
   <!-- القلب أسفل الصفحة -->
   <div class="heart-section">
     <canvas id="heartCanvas"></canvas>
@@ -241,6 +281,19 @@
   let idx = 0;
   setInterval(()=>{ idx=(idx+1)%photos.length; setActive(idx); },6000);
 
+
+  const btn = document.getElementById("surpriseBtn");
+  const box = document.getElementById("surpriseBox");
+
+  btn.onclick = function() {
+    box.style.opacity = "1";
+    box.style.transform = "scale(1)";
+    box.style.pointerEvents = "auto";
+
+    btn.innerHTML = "❤️ تمت قراءة المفاجأة";
+    btn.style.background = "#999";
+    btn.style.cursor = "default";
+  };
   // قلوب تطير
   function floatCombo(){
     const el = document.createElement("div");
@@ -257,13 +310,8 @@
   // رسم القلب
   window.onload = function () {
 
-  function startHeartLoop() {
-    const canvas = document.getElementById("heartCanvas");
-    const ctx = canvas.getContext("2d");
-
-    // مسح وإعادة ضبط
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const canvas = document.getElementById("heartCanvas");
+  const ctx = canvas.getContext("2d");
 canvas.width = 400;
   canvas.height = 400;
   ctx.translate(canvas.width / 2, canvas.height / 2);
@@ -300,11 +348,9 @@ canvas.width = 400;
       
     } 
           drawStep(); 
+
   }
-window.onload = startHeartLoop ;
-  };
 </script>
 
 </body>
 </html>    
-
