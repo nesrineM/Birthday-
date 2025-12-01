@@ -257,8 +257,13 @@
   // رسم القلب
   window.onload = function () {
 
-  const canvas = document.getElementById("heartCanvas");
-  const ctx = canvas.getContext("2d");
+  function startHeartLoop() {
+    const canvas = document.getElementById("heartCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // مسح وإعادة ضبط
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 canvas.width = 400;
   canvas.height = 400;
   ctx.translate(canvas.width / 2, canvas.height / 2);
@@ -295,8 +300,9 @@ canvas.width = 400;
       
     } 
           drawStep(); 
-
   }
+window.onload = startHeartLoop ;
+  };
 </script>
 
 </body>
